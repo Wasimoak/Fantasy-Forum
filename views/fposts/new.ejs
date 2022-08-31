@@ -1,0 +1,13 @@
+<%- include('../partials/header') %>
+
+<form id="new-form" action="/fposts" method="POST">
+  <label>Title:</label>
+  <input type="text" name="title">
+  <label>Sport:</label>
+  <input type="text" name="sport">
+  <label>Remaks</label>
+  <input type="text" name="remarks" checked>
+  <input type="submit" value="Add Post">
+</form>
+
+<%- include('../partials/footer') %>
