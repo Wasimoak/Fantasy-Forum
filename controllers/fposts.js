@@ -23,7 +23,6 @@ function newFpost(req, res) {
 }
 
 function create(req, res) {
-  // convert nowShowing's checkbox of nothing or "on" to boolean
   req.body.nowShowing = !!req.body.nowShowing;
   for (let key in req.body) {
     if (req.body[key] === '') delete req.body[key];
@@ -31,7 +30,6 @@ function create(req, res) {
   const fpost = new Fpost(req.body);
   fpost.save(function(err) {
     if (err) return res.redirect('/fposts/new');
-    // res.redirect('/fposts');
     res.redirect(`/fposts/${fpost._id}`);
   });
 }
