@@ -2,17 +2,23 @@ body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: beige;
+  /* background-image:url(https://imaginesports.com/wp-content/uploads/2019/02/Why-Do-People-Play-Fantasy-Sports.jpg;);
+  /* background-repeat: repeat; */
+  /* background-size: 150px;  */
 }
 
 a {
   color: #00B7FF;
 }
-
+.comm{
+  border: 3px solid black;
+}
 .card-container{
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  align-items: baseline;
 }
+
 .card {
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, 
   rgba(0, 0, 0, 0.12) 0px -12px 30px, 
@@ -20,9 +26,13 @@ a {
   rgba(0, 0, 0, 0.17) 0px 12px 13px,
   rgba(0, 0, 0, 0.09) 0px -3px 5px;
   background-color: white;
-  width: 500px;
-  height: 300px;
+  width: 650px;
+  height: 290px;
+  margin: 150px;
 }
+
+
+
 form{
   text-align: center;
   display: flex;
@@ -52,7 +62,7 @@ form textarea{
 
 #new-form{
   border: 2px solid grey;
-  margin: 20px;
+  margin: 50px;
 }
 
 .forum{
@@ -69,4 +79,21 @@ form textarea{
 #del{
   justify-content: left;
   align-items: flex-end;
+}
+
+.title{
+  font-size: xx-large;
+  color: red;
+  text-align: center;
+}
+
+.description{
+  font-size: medium;
+  color: black;
+  text-align: center;
+}
+
+.upd {
+  text-align: center;
+  margin-top: 15px;
 }

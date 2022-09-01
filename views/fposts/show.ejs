@@ -10,31 +10,34 @@
 </head>
 <body>
 
-<h1><%= fpost.title%></h1>
-<h1><%= fpost.description%></h1>
-<h1>
+  
+<h1 class="title"><%= fpost.title%></h1>
+<h2 class="description"><%= fpost.description%></h2>
 <div class="card-container">
-<div class="card">
+  <div class="card">
   <form action="/fposts/<%=fpost._id%>" method="POST">
+    <label>Update Post:</label>
+    <div class="upd">Edit Title</div>
     <input type="text" name="title">
+    <div class="upd">Edit Discription</div>
     <textarea type="text" name="description"></textarea>
     <button type="submit">update</button>
   </form>
-</div>
-<div class="card">
+  </div>
+ <div class="comm">
+  <label>COMMENTS:</label>
   <%fpost.comments.forEach(comment=>{%>
     <h3><%=comment.comment%></h3>
   <%})%>
-
-</div>
-<div class="card">
+ </div>
+ <div class="card">
   <form id="add-comment-form" method="POST"
   action="/comments/<%= fpost._id %>/comments">
-  <label>Comment:</label>
+  <label>Add Comment:</label>
   <textarea name="comment"></textarea>
   <input type="submit" value="Add Comment">
 </form>
-</div>
+ </div>
 </div>
 </body>
 </html>
