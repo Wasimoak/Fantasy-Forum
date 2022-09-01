@@ -1,34 +1,55 @@
 const Fpost = require('../models/fposts');
+const User = require('../models/user')
 
 module.exports = {
   index,
   show,
   new: newFpost,
-  create
+  create,
+  update,
+  delete: deleteFpost
 };
 
-function index(req, res) {
-  Fpost.find({}, function(err, fposts) {
-    res.render('fposts/index', { title: 'All Post', fposts });
-  });
+async function index(req, res) {
+  console.log(req.user)
+  let allUser = await User.find({})
+  let fposts = await Fpost.find({})
+  console.log(allUser)
+ try{
+res.render('fposts/index', {user: req.user, fposts})
+ }catch(err){
+  console.log(err)
+ } 
 }
 
-function show(req, res) {
-  Fpost.findById(req.params.id)
-      res.render('fposts/show');
+
+async function show(req, res) {
+  console.log(req.params.id, "-------------------------")
+  let fpost = await Fpost.findById(req.params.id)
+      res.render('fposts/show', {fpost});
     };
 
 function newFpost(req, res) {
-  res.render('fposts/new', { title: 'Add Post' });
+  res.render('fposts/new', { title: 'Add Post'});
 }
 
 function create(req, res) {
-  for (let key in req.body) {
-    if (req.body[key] === '') delete req.body[key];
-  }
   const fpost = new Fpost(req.body);
   fpost.save(function(err) {
     if (err) return res.redirect('/fposts/new');
     res.redirect(`/fposts/${fpost._id}`);
   });
+}
+async function update(req, res) {
+await Fpost.findByIdAndUpdate(req.params.id, req.body)
+res.redirect('/fposts')
+}
+
+async function deleteFpost (req, res, next) {
+  try{
+    await Fpost.findByIdAndDelete(req.params.id)
+  res.redirect('/fposts');
+  }catch(err) {
+    res.redirect('fposts')
+  }
 }

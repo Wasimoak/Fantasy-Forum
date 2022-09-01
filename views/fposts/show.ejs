@@ -1,51 +1,42 @@
-<%- include('../partials/header') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <%- include('../partials/header') %>
+  <title>Fantasy Forum</title>
+</head>
+<body>
 
-<section id="show-page">
-  <div>Title: </div>
-  <div><%= fpost.title %></div>
-  <div>Sport: </div>
-  <div><%= fpost.sport %></div>
-  <div>Remarks</div>
-  <div><%= fpost.remarks %></div>
+<h1><%= fpost.title%></h1>
+<h1><%= fpost.description%></h1>
+<h1>
+<div class="card-container">
+<div class="card">
+  <form action="/fposts/<%=fpost._id%>" method="POST">
+    <input type="text" name="title">
+    <textarea type="text" name="description"></textarea>
+    <button type="submit">update</button>
+  </form>
+</div>
+<div class="card">
+  <%fpost.comments.forEach(comment=>{%>
+    <h3><%=comment.comment%></h3>
+  <%})%>
 
-</section>
-
-
-
-<br><br><h2>Comments</h2>
-<form id="add-comment-form" method="POST"
-  action="/fposts/<%= fpost._id %>/comments">
+</div>
+<div class="card">
+  <form id="add-comment-form" method="POST"
+  action="/comments/<%= fpost._id %>/comments">
   <label>Comment:</label>
-  <textarea name="content"></textarea>
+  <textarea name="comment"></textarea>
   <input type="submit" value="Add Comment">
 </form>
-
-<% if (fpost.comments.length) { %>
-  <table>
-    <thead>
-      <tr>
-      	 <th>Date</th>
-        <th>Comment</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% var total = 0 %>
-      <% fpost.comments.forEach(function(r) { %>
-        <% total += r.rating %>
-        <tr>
-          <td><%= r.createdAt.toLocaleDateString() %></td>
-          <td><%= r.content %></td>
-        </tr>
-        <% }); %>
-        <tr>
-          <td colspan="2"></td>
-          <td><strong><%= (total / fpost.comments.length).toFixed(1) %></strong></td>
-        </tr>
-    </tbody>
-  </table>
-<% } else { %>
-  <h5>No Comments Yet</h5>
-<% } %>
+</div>
+</div>
+</body>
+</html>
 
 
-<%- include('../partials/footer') %>

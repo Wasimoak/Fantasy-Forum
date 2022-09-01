@@ -2,18 +2,25 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const commentSchema = new Schema({
-  content: String,
+  comment: {type: String},
+  // user: {type: Schema.Types.ObjectId, ref: 'User'}
 }, {
   timestamps: true
 });
 
-const fpostSchema = new Schema({
+const fPostSchema = new Schema({
   title: {
     type: String,
     required: true
   },
+  description: {
+    type: String,
+    required: true
+  },
+  comments: [commentSchema]
 }, {
   timestamps: true
 });
 
-module.exports = mongoose.model('Fpost', fpostSchema);
+
+module.exports = mongoose.model('Fpost', fPostSchema);

@@ -1,14 +1,17 @@
 var Fpost = require('../models/fposts');
 
 module.exports = {
-  create
+  create,
 };
 
-function create(req, res) {
-  Fpost.findById(req.params.id, function(err, fpost) {
-    fpost.comments.push(req.body);
-    fpost.save(function(err) {
-      res.redirect(`/fposts/${fpost._id}`);
-    });
-  });
+async function create(req, res) {
+  try{
+  let fpost = await Fpost.findById(req.params.id)
+
+  fpost.comments.push(req.body)
+  await fpost.save()
+  res.redirect(`/fposts/${req.params.id}`)
+  }catch(err){
+res.redirect(`/fposts/${req.params.id}`)
+  } 
 }
