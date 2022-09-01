@@ -24,7 +24,6 @@ res.render('fposts/index', {user: req.user, fposts})
 
 
 async function show(req, res) {
-  console.log(req.params.id, "-------------------------")
   let fpost = await Fpost.findById(req.params.id)
       res.render('fposts/show', {fpost});
     };
