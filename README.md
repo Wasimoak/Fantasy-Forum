@@ -4,7 +4,7 @@ The app allows users to view, post and comment on a forum dedicated to any type 
 
 <img src="https://i.imgur.com/gFh55az.pngs" width="600" height= "300">
 
-☐ Technologies Used: node.js, mongoose, css
+☐ Technologies Used: express, node.js, mongoDB, html, css
 
 ☐ Getting Started. 
 
