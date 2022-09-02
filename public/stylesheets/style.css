@@ -2,14 +2,13 @@ body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: whitesmoke;
-  /* background-image:url(https://imaginesports.com/wp-content/uploads/2019/02/Why-Do-People-Play-Fantasy-Sports.jpg;);
-  background-repeat:no-repeat; 
-  background-size: 150px;  */
+  
 } 
 
 a {
   color: #00B7FF;
   font-size: 20px;
+  margin: 25px;
 }
 
  #fantpost{
@@ -69,7 +68,10 @@ form textarea{
   border: 3px solid black;
   display: flex;
   justify-content: space-around;
-  background-color: black;
+  background-color: lightgray;
+  background-image:url(https://imaginesports.com/wp-content/uploads/2019/02/Why-Do-People-Play-Fantasy-Sports.jpg;);
+  background-repeat:no-repeat; 
+  background-size: 115px; 
 }
 
 #new-form{
